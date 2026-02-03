@@ -6,12 +6,14 @@ import {
   followUsers,
   getUserConnections,
   getUserData,
+  getUserProfiles,
   sendConnectionRequest,
   unfollowUsers,
   updateUserData,
 } from "../controllers/userController.js";
 import { protect, type ClerkAuthRequest } from "../middleware/auth.js";
 import upload from "../config/multer.js";
+import { getUserRecentMessages } from "../controllers/messageController.js";
 
 /**
  * Express middleware type with Clerk authentication
@@ -56,6 +58,8 @@ router.post("/unfollow", withClerkAuth(protect), withClerkAuth(unfollowUsers));
 router.post("/connect", withClerkAuth(protect), withClerkAuth(sendConnectionRequest));
 router.post("/accept", withClerkAuth(protect), withClerkAuth(acceptConnectionRequest));
 router.get("/connections", withClerkAuth(protect), withClerkAuth(getUserConnections));
+router.post("/profiles", withClerkAuth(protect), withClerkAuth(getUserProfiles));
+router.get("/recent-messages", withClerkAuth(protect), withClerkAuth(getUserRecentMessages));
 
 
 export default router;
