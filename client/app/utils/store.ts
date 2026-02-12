@@ -1,15 +1,18 @@
 import { configureStore } from "@reduxjs/toolkit";
 import userReducer from "@/features/user/userSlice";
-import connectionsReducer from "@/features/user/userSlice";
-import messagesReducer from "@/features/user/userSlice";
+import connectionsReducer from "@/features/connections/connectionsSlice";
+import messagesReducer from "@/features/messages/messagesSlice";
 
-export const store = configureStore({
-  reducer: {
-    user: userReducer,
-    connections: connectionsReducer,
-    messages: messagesReducer,
-  },
-});
+export const makeStore = () => {
+  return configureStore({
+    reducer: {
+      user: userReducer,
+      connections: connectionsReducer,
+      messages: messagesReducer,
+    },
+  });
+};
 
-export type AppDispatch = typeof store.dispatch;
-export type RootState = ReturnType<typeof store.getState>;
+export type AppStore = ReturnType<typeof makeStore>;
+export type RootState = ReturnType<AppStore["getState"]>;
+export type AppDispatch = AppStore["dispatch"];

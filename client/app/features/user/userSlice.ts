@@ -1,8 +1,13 @@
 import api from "@/api/axios";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { toast } from "react-hot-toast";
+import { User } from "@/assets/assets";
 
-const initialState = {
+interface UserState {
+  value: User | null;
+}
+
+const initialState: UserState = {
   value: null,
 };
 

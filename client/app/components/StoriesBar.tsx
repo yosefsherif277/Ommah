@@ -12,9 +12,11 @@ const StoriesBar = () => {
   const [stories, setStories] = useState<Story[]>([]);
   const [showModal, setShowModal] = useState(false);
   const [viewStory, setViewStory] = useState<Story | null>(null);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
     setStories(dummyStoriesData as Story[]);
+    setIsMounted(true);
   }, []);
 
   return (
@@ -60,7 +62,7 @@ const StoriesBar = () => {
 
             {/* تاريخ النشر */}
             <p className="text-white absolute bottom-1 right-2 z-10 text-xs">
-              {moment(story.createdAt).fromNow()}
+              {isMounted ? moment(story.createdAt).fromNow() : "..."}
             </p>
 
             {/* وسائط القصة (صورة/فيديو) */}

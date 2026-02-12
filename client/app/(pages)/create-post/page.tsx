@@ -13,6 +13,8 @@ const CreatePost = () => {
 
   const user = useSelector((state: RootState) => state.user.value);
 
+  if (!user) return null;
+
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       const files = Array.from(e.target.files);

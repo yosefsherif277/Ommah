@@ -12,12 +12,12 @@ const ProfileModal = ({
 }) => {
   const user = useSelector((state: RootState) => state.user.value);
   const [editForm, setEditForm] = useState({
-    username: user.username || "",
-    bio: user.bio || "",
-    location: user.location || "",
+    username: user?.username || "",
+    bio: user?.bio || "",
+    location: user?.location || "",
     profile_picture: null as File | null,
     cover_photo: null as File | null,
-    full_name: user.full_name || "",
+    full_name: user?.full_name || "",
   });
 
   const handleSaveProfile = async (e: React.FormEvent) => {
@@ -60,7 +60,7 @@ const ProfileModal = ({
                     src={
                       editForm.profile_picture
                         ? URL.createObjectURL(editForm.profile_picture)
-                        : user.profile_picture
+                        : user?.profile_picture || ""
                     }
                     alt="Profile"
                     className="w-24 h-24 rounded-full object-cover mt-2"
@@ -99,7 +99,7 @@ const ProfileModal = ({
                     src={
                       editForm.cover_photo
                         ? URL.createObjectURL(editForm.cover_photo)
-                        : user.cover_photo
+                        : user?.cover_photo || ""
                     }
                     alt="Cover"
                     className="w-full h-40 rounded-lg bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 object-cover mt-2"

@@ -6,6 +6,7 @@ import Link from "next/link";
 
 const RecentMessages = () => {
   const [messages, setMessages] = useState<Message[]>([]);
+  const [isMounted, setIsMounted] = useState(false);
 
   const fetchRecentMessages = async () => {
     setMessages(dummyRecentMessagesData);
@@ -13,6 +14,7 @@ const RecentMessages = () => {
 
   useEffect(() => {
     fetchRecentMessages();
+    setIsMounted(true);
   }, []);
 
   return (
@@ -41,7 +43,7 @@ const RecentMessages = () => {
                   {message.from_user_id.full_name}
                 </p>
                 <p className="text-[10px] text-slate-400">
-                  {moment(message.createdAt).fromNow()}
+                  {isMounted ? moment(message.createdAt).fromNow() : "..."}
                 </p>
               </div>
               <div className="flex justify-between items-center">

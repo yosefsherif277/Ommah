@@ -3,11 +3,16 @@ import { BadgeCheck, Heart, MessageCircle, Share2 } from "lucide-react";
 import moment from "moment";
 import Image from "next/image";
 import { Post } from "@/assets/assets";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "@/utils/store";
 
 const PostCard = ({ post }: { post: Post }) => {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
   // دالة لتحويل الهاشتاجات إلى روابط قابلة للنقر
   const processContentWithHashtags = (content: string) => {
     if (!content) return "";
@@ -42,7 +47,7 @@ const PostCard = ({ post }: { post: Post }) => {
             <BadgeCheck className="w-4 h-4 text-blue-500" />
           </div>
           <div className="text-gray-500 text-sm">
-            @{post.user.username} • {moment(post.createdAt).fromNow()}
+            @{post.user.username} • {isMounted ? moment(post.createdAt).fromNow() : "..."}
           </div>
         </div>
       </div>
@@ -82,7 +87,7 @@ const PostCard = ({ post }: { post: Post }) => {
           onClick={handleLikes}
         >
           <Heart
-            className={`w-4 h-4 ${likes.includes(currentUser._id) ? "text-red-500 fill-red-500" : ""}`}
+            className={`w-4 h-4 ${currentUser && likes.includes(currentUser._id) ? "text-red-500 fill-red-500" : ""}`}
           />
           <span>{likes.length}</span>
         </div>

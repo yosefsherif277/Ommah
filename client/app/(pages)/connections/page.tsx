@@ -13,7 +13,7 @@ import {
   dummyFollowersData as followers,
   dummyFollowingData as following,
   dummyPendingConnectionsData as pendingConnections,
-} from "@/../assets/assets";
+} from "@/assets/assets";
 import Image from "next/image";
 
 const Connections = () => {
