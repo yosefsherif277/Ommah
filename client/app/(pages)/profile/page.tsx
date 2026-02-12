@@ -4,7 +4,7 @@ import { useParams } from "next/navigation";
 import { dummyPostsData, dummyUserData, User, Post } from "@/assets/assets";
 import { Verified, PenBox, Calendar, MapPin } from "lucide-react";
 import moment from "moment";
-import PostCard from "@/../components/PostCard";
+import PostCard from "@/components/PostCard";
 import Image from "next/image";
 import Loading from "@/components/loading";
 import ProfileModal from "@/components/ProfileModal";

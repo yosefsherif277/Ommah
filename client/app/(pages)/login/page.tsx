@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { Star } from "lucide-react";
 import { SignIn } from "@clerk/nextjs";
-import { assets } from "@/../assets/assets";
+import { assets } from "@/assets/assets";
 
 const Login = () => {
   return (

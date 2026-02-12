@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { dummyConnectionsData } from "@/../assets/assets";
+import { dummyConnectionsData } from "@/assets/assets";
 import { Eye, MessageSquare } from "lucide-react";
 
 const Messages = () => {
